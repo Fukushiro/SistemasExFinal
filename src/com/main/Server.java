@@ -11,6 +11,7 @@ import java.util.Scanner;
 import javax.crypto.Cipher;
 
 import com.classes.Criptografia;
+import com.classes.Criptografia2;
 import com.classes.CriptografiaClass;
 
 public class Server {
@@ -18,7 +19,10 @@ public class Server {
 		
 		Scanner s = new Scanner(System.in);
 		Criptografia c = new Criptografia();
+		Criptografia2 c2 = new Criptografia2();
 		int porta = 1099;
+		
+		
 		try {
 			System.out.println(Cipher.getMaxAllowedKeyLength("AES"));
 		} catch (NoSuchAlgorithmException e1) {
@@ -31,7 +35,13 @@ public class Server {
 			System.out.println("Informe a mensagem a ser criptografada");
 			String mensagem = s.nextLine();
 			System.out.println("Informe a chave a ser usada(minimo de 16 valores)");
-			byte[] b = s.nextLine().getBytes();
+			String str = s.nextLine();
+			
+			String ret = c2.getCriptografar(mensagem, str);
+			
+			System.out.println(ret);
+			
+			byte[] b = str.getBytes();
 			
 			Remote remote =  new CriptografiaClass(mensagem, b);
 			Naming.rebind(nome, remote);

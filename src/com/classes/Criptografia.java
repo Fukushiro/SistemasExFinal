@@ -29,7 +29,7 @@ public class Criptografia {
     public byte[] getCriptografar(byte[] dados, byte[] chave) throws NoSuchAlgorithmException,
             InvalidKeyException, IllegalBlockSizeException,
             BadPaddingException, NoSuchPaddingException, InvalidAlgorithmParameterException {
-    	//KeySpec s = new PBEKeySpec(p)
+    	
         SecretKeySpec skeySpec = new SecretKeySpec(chave, "AES");
         Cipher cipher = Cipher.getInstance("AES/ECB/NoPadding");
         
