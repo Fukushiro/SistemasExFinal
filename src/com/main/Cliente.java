@@ -25,7 +25,7 @@ public class Cliente {
 			
 			ICriptografia crip = (ICriptografia)Naming.lookup(con);
 			System.out.println("Informe a chave a ser utilizada");
-			byte[] chave = s.nextLine().getBytes();
+			byte[] chave = c.nullPadString(s.nextLine()).getBytes();
 			
 			String res = crip.descriptografar(chave);
 			System.out.println(res);
